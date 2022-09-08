@@ -89,6 +89,7 @@ public class Manager {
                     //show list of available exercises
                         output = "- available exercises:";
                         output += underlineText(output);
+                        //TODO: Fix Exercise list order
                         for(String exercise : exerciseTable.keySet()) {
                             output += "\n- " + "Exercise <" + exercise + ">";
                         }
