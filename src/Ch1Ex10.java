@@ -11,6 +11,6 @@ public class Ch1Ex10 {
 
     public static double runnerSpeed(int distance, int time) {
         double miles = distance / 1.6;
-        return miles / (time / 3600);
+        return Math.round(miles / (time / 3600.0) * 100) / 100.0;
     }
 }

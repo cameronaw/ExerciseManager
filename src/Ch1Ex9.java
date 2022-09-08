@@ -7,6 +7,6 @@ public class Ch1Ex9 {
         double area = w * h;
         double perimeter = 2 * (w + h);
 
-        System.out.println("Area: " + area + "\nPerimeter: " + perimeter);
+        System.out.println("Area: " + area + "\nPerimeter: " + Math.round(perimeter * 1000) / 1000.0);
     }
 }

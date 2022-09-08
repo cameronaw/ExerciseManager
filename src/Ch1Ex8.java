@@ -7,6 +7,6 @@ public class Ch1Ex8 {
         double perimeter = 2 * radius * PI;
         double area = radius * radius * PI;
 
-        System.out.println("Perimeter: " + perimeter + "\nArea: " + area);
+        System.out.println("Perimeter: " + Math.round(perimeter * 1000) / 1000.0 + "\nArea: " + Math.round(area * 1000) / 1000.0);
     }
 }
