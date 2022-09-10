@@ -2,7 +2,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Ch1Ex11 {
+public class Exercise01_11 {
     public static void main(String[] args, Scanner in) {
         /* RATES */
         // One birth every 7 seconds
@@ -21,6 +21,7 @@ public class Ch1Ex11 {
 
         /* TASK */
         //write a program to display population growth each year for the next 5 years
+        
         int years = 5;
         int seconds = 365 * 24 * 60 * 60;
         double births = seconds / 7;
@@ -37,6 +38,7 @@ public class Ch1Ex11 {
         
     }
 
+    // i love making things complicated for no reason
     public static ArrayList<String> calculateGrowth(int years, double births, double deaths, double immigrants, int population) {
         ArrayList<String> output = new ArrayList<String>();
         DecimalFormat df = new DecimalFormat("#");

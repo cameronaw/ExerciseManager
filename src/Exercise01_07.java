@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ch1Ex7 {
+public class Exercise01_07 {
     public static void main(String[] args, Scanner in) {
         System.out.println("PI with an accuracy of roughly " + Math.floor((1 - 1.0/11) * 10000) / 100 + "%:\t" + calculatePI(11));
         System.out.println("PI with an accuracy of roughly " + Math.floor((1 - 1.0/13) * 10000) / 100 + "%:\t" + calculatePI(13));

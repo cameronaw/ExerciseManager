@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ch1Ex8 {
+public class Exercise01_08 {
     public static void main(String[] args, Scanner in) {
         double radius = 6.5;
         double PI = 3.14159;

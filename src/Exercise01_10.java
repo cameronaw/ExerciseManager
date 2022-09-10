@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ch1Ex10 {
+public class Exercise01_10 {
     public static void main(String[] args, Scanner in) {
         int minutes = 50;
         int seconds = 30;
