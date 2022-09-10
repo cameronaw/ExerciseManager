@@ -1,6 +1,6 @@
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Hashtable;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class Manager {
@@ -33,16 +33,16 @@ public class Manager {
 
     //Obtains all exercise classes and command references
     //TODO: implement class search via framework/api like Spring
-    public static Hashtable<String, Class<?>> getExercises() {
-        Hashtable<String, Class<?>> output = new Hashtable<>();
+    public static LinkedHashMap<String, Class<?>> getExercises() {
+        LinkedHashMap<String, Class<?>> output = new LinkedHashMap<>();
         //this is disgusting lol
         for(int i = 1; i <= 18; i++) {
             try {
-                Class.forName("Ch" + i + "Ex1");
+                Class.forName("Exercise" + String.format("%02d", i) + "_01");
                 for(int j = 1; j <= 51; j++) {
                     try {
                         //TODO: implement ability to find description via reflection (maybe)
-                        output.put(i + "." + j, Class.forName("Ch" + i + "Ex" + j));
+                        output.put(String.format("%02d", i) + "." + String.format("%02d", j), Class.forName("Exercise" + String.format("%02d", i) + "_" + String.format("%02d", j)));
                     } catch (ClassNotFoundException ee) {
                         break;
                     }
@@ -66,7 +66,7 @@ public class Manager {
     public static void main(String[] args) {
         boolean boot = true;
         Commands[] cmdList = Commands.values();
-        Hashtable<String, Class<?>> exerciseTable = getExercises();
+        LinkedHashMap<String, Class<?>> exerciseTable = getExercises();
         Scanner in = new Scanner(System.in);
         String output = "Welcome to the Java Exercises Manager! Use the 'help' command to view possible arguments.";
 

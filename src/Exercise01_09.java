@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ch1Ex9 {
+public class Exercise01_09 {
     public static void main(String[] args, Scanner in) {
         double w = 5.3;
         double h = 8.6;
