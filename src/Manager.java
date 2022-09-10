@@ -107,7 +107,6 @@ public class Manager {
                                     output = underlineText(runStr) + "\n- exited with code 0";
                                     
                                     //invoke main method of exercise
-                                    //TODO: prevent exercise scanners from interferring with manager scanner
                                     Method main = exercise.getMethod("main", String[].class, Scanner.class);
                                     main.invoke(null, (String[]) args, (Scanner) in);
                                     in.nextLine();
