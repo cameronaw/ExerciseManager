@@ -1,7 +1,0 @@
-import java.util.Scanner;
-
-public class Ch0Ex0 {
-    public static void main(String[] args, Scanner in) {
-        //code
-    }
-}
