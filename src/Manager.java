@@ -32,7 +32,9 @@ public class Manager {
     }
 
     //Obtains all exercise classes and command references
-    //TODO: implement class search via framework/api like Spring
+    //TODO: completely revamp class search function via reflective api
+    //TODO: add ability to find main class and its properties reflectively regardless of class name 
+    //TODO: add ability to run an exercise with runtime errors without crashing the manager
     public static LinkedHashMap<String, Class<?>> getExercises() {
         LinkedHashMap<String, Class<?>> output = new LinkedHashMap<>();
         //this is disgusting lol
@@ -41,7 +43,6 @@ public class Manager {
                 Class.forName("Exercise" + String.format("%02d", i) + "_01");
                 for(int j = 1; j <= 51; j++) {
                     try {
-                        //TODO: implement ability to find description via reflection (maybe)
                         output.put(String.format("%02d", i) + "." + String.format("%02d", j), Class.forName("Exercise" + String.format("%02d", i) + "_" + String.format("%02d", j)));
                     } catch (ClassNotFoundException ee) {
                         break;
@@ -77,25 +78,24 @@ public class Manager {
             String[] inSplit = input.split(" ");
             try {
                 switch(Commands.findCommand(inSplit[0])) {
-                    case HELP:
                     //show help arguments
+                    case HELP:
                         output = "- possible arguments:";
                         output += underlineText(output);
                         for(Commands cmd : cmdList) {
                             output += "\n- " + cmd.use + ":\t" + cmd.description;
                         }
                         break;
-                    case LIST:
                     //show list of available exercises
+                    case LIST:
                         output = "- available exercises:";
                         output += underlineText(output);
-                        //TODO: Fix Exercise list order
                         for(String exercise : exerciseTable.keySet()) {
                             output += "\n- " + "Exercise <" + exercise + ">";
                         }
                         break;
-                    case RUN:
                     //run the desired exercise
+                    case RUN:
                         try {
                             if(inSplit.length > 1) {
                                 //access exercise class
@@ -107,10 +107,10 @@ public class Manager {
                                     output = underlineText(runStr) + "\n- exited with code 0";
                                     
                                     //invoke main method of exercise
-                                    //TODO: implement ability to find main method regardless of name
-                                    //TODO: implement ability to exit exercise with runtime error without stopping program
+                                    //TODO: prevent exercise scanners from interferring with manager scanner
                                     Method main = exercise.getMethod("main", String[].class, Scanner.class);
                                     main.invoke(null, (String[]) args, (Scanner) in);
+                                    in.nextLine();
                                 } else {
                                     output = "- exercise not found";
                                 }
@@ -118,16 +118,16 @@ public class Manager {
                                 output = "- please specify an exercise";
                             }
                         } catch(NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                            output = "- exercise unable to load\n- (if you see this message, please contact the developer lolz)";
+                            output = "- exercise unable to load\n- (if you see this message, please contact the developer)";
                         }
                         break;
-                    case CLEAR:
                     //clears the screen with a ANSI escape code
+                    case CLEAR:
                         output = "\033[H\033[2J";
                         System.out.flush();
                         break;
-                    case EXIT:
                     //exits the program
+                    case EXIT:
                         boot = false;
                         break;
                 }
