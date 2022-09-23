@@ -18,5 +18,7 @@ public class Exercise03_01 {
         } else {
             System.out.println("The equation has no real roots");
         }
+
+        in.nextLine();
     }
 }

@@ -8,5 +8,7 @@ public class Exercise02_09 {
         double t = in.nextDouble();
         double a = Math.round((v1 - v0)/t * 10000) / 10000.0;
         System.out.println("The average acceleration is " + a);
+
+        in.nextLine();
     }
 }

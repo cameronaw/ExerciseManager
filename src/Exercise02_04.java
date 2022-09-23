@@ -6,5 +6,7 @@ public class Exercise02_04 {
         double squareMeter = in.nextDouble();
         double ping = squareMeter * 0.3025;
         System.out.println(squareMeter + " square meters is " + ping + " pings");
+
+        in.nextLine();
     }
 }

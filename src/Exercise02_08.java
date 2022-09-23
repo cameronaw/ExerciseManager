@@ -10,5 +10,7 @@ public class Exercise02_08 {
         long currentMinute = totalSeconds / 60 % 60;
         long currentHour = (totalSeconds / 60 / 60 + timezone) % 24;
         System.out.println("The current time is " + String.format("%02d", currentHour) + ":" + String.format("%02d", currentMinute) + ":" + String.format("%02d", currentSecond));
+
+        in.nextLine();
     }
 }

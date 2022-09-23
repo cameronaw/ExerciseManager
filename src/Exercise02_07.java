@@ -7,5 +7,7 @@ public class Exercise02_07 {
         int years = minutes / 60 / 24 / 365;
         int days = minutes / 60 / 24 % 365;
         System.out.println(minutes + " minutes is approximately " + years + " years and " + days + " days");
+
+        in.nextLine();
     }
 }

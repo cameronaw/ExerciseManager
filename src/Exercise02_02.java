@@ -9,5 +9,7 @@ public class Exercise02_02 {
         System.out.println("The area is " + Math.round(area * 1000) / 1000.0);
         double volume = area * sides;
         System.out.println("The volume of the Triangular prism is " + Math.round(volume * 1000) / 1000.0);
+        
+        in.nextLine();
     }
 }

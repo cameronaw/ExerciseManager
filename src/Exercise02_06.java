@@ -16,6 +16,8 @@ public class Exercise02_06 {
             } else {
                 System.out.println(input + " is not a number between 0 and 1000\n");
             }
+
+            in.nextLine();
         }
     }
 }

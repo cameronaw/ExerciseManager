@@ -2,6 +2,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public class Manager {
     //User input command list
@@ -58,7 +60,12 @@ public class Manager {
     //Underlines a specific string depending on its length
     public static String underlineText(String input) {
         String output = "\n";
-        for(int i = 0; i < input.length(); i++) {
+        String[] inputArray = input.split("\n");
+        for(int i = 0; i < inputArray[inputArray.length - 1].length(); i++) {
+            if(inputArray[inputArray.length - 1].charAt(i) == '\t') {
+                output += "========";
+                continue;
+            }
             output += "=";
         }
         return output;
@@ -91,7 +98,7 @@ public class Manager {
                         output = "- available exercises:";
                         output += underlineText(output);
                         for(String exercise : exerciseTable.keySet()) {
-                            output += "\n- " + "Exercise <" + exercise + ">";
+                            output += "\n- Exercise <" + exercise + ">";
                         }
                         break;
                     //run the desired exercise
@@ -109,7 +116,6 @@ public class Manager {
                                     //invoke main method of exercise
                                     Method main = exercise.getMethod("main", String[].class, Scanner.class);
                                     main.invoke(null, (String[]) args, (Scanner) in);
-                                    in.nextLine();
                                 } else {
                                     output = "- exercise not found";
                                 }
@@ -117,7 +123,10 @@ public class Manager {
                                 output = "- please specify an exercise";
                             }
                         } catch(NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                            output = "- exercise unable to load\n- (if you see this message, please contact the developer)";
+                            StringWriter sw = new StringWriter();
+                            e.printStackTrace(new PrintWriter(sw));
+                            output = "- exercise unable to load\n- please refer to the stack trace below:\n" + sw.toString() + underlineText("\t" + sw.toString()) + "\n- exited with code 1";
+                            in.nextLine();
                         }
                         break;
                     //clears the screen with a ANSI escape code
