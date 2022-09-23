@@ -6,6 +6,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 public class Manager {
+    static boolean boot = true;
+
     //User input command list
     public enum Commands {
         HELP("help", "displays the help menu"),
@@ -71,7 +73,6 @@ public class Manager {
     } 
 
     public static void main(String[] args) {
-        boolean boot = true;
         Commands[] cmdList = Commands.values();
         LinkedHashMap<String, Class<?>> exerciseTable = getExercises();
         Scanner in = new Scanner(System.in);
@@ -126,7 +127,6 @@ public class Manager {
                             StringWriter sw = new StringWriter();
                             e.printStackTrace(new PrintWriter(sw));
                             output = "- exercise unable to load\n- please refer to the stack trace below:\n" + sw.toString() + underlineText("\t" + sw.toString()) + "\n- exited with code 1";
-                            in.nextLine();
                         }
                         break;
                     //clears the screen with a ANSI escape code
