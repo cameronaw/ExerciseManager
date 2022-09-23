@@ -36,7 +36,6 @@ public class Manager {
     //Obtains all exercise classes and command references
     //TODO: completely revamp class search function via reflective api
     //TODO: add ability to find main class and its properties reflectively regardless of class name 
-    //TODO: add ability to run an exercise with runtime errors without crashing the manager
     public static LinkedHashMap<String, Class<?>> getExercises() {
         LinkedHashMap<String, Class<?>> output = new LinkedHashMap<>();
         //this is disgusting lol
@@ -90,7 +89,8 @@ public class Manager {
                         output = "- possible arguments:";
                         output += underlineText(output);
                         for(Commands cmd : cmdList) {
-                            output += "\n- " + cmd.use + ":\t" + cmd.description;
+                            //TODO: fix alignment lol
+                            output += "\n- " + cmd.use + ":\t\t" + cmd.description;
                         }
                         break;
                     //show list of available exercises

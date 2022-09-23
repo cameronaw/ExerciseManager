@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Exercise {
+public class Exercise/*00_00*/ {
     public static void main(String[] args, Scanner in) {
         
         // ...
