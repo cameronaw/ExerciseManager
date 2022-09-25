@@ -38,11 +38,6 @@ public class Manager {
     //Obtains all exercise classes and command references
     //TODO: completely revamp class search function via reflective api
     //TODO: add ability to find main class and its properties reflectively regardless of class name 
-    /*
-     * asdfasdf
-     * 
-     * 
-     */
     public static LinkedHashMap<String, Class<?>> getExercises() {
         LinkedHashMap<String, Class<?>> output = new LinkedHashMap<>();
         //this is disgusting lol
