@@ -8,3 +8,12 @@ public class Exercise/*00_00*/ {
         in.nextLine(); // use when scanner is used
     }
 }
+
+@SuppressWarnings("resource") // use to silence stupid scanner leak
+class /*Name*/ {
+    public void main(String[] args) {
+
+        // ...
+
+    }
+}
