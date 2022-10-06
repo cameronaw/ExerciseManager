@@ -46,22 +46,22 @@ class ComputeChange2 {
         }
         if(numberOfDimes != 0) {
             output += "\n\t" + numberOfDimes + " dime";
-            if(numberOfOneDollars != 1) {
+            if(numberOfDimes != 1) {
                 output += "s";
             }
         }
         if(numberOfNickels != 0) {
             output += "\n\t" + numberOfNickels + " nickle";
-            if(numberOfOneDollars != 1) {
+            if(numberOfNickels != 1) {
                 output += "s";
             }
         }
         if(numberOfPennies != 0) {
             output += "\n\t" + numberOfPennies + " penn";
-            if(numberOfOneDollars != 1) {
-                output += "y";
-            } else {
+            if(numberOfPennies != 1) {
                 output += "ies";
+            } else {
+                output += "y";
             }
         }
 
