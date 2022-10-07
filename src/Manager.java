@@ -52,7 +52,7 @@ public class Manager {
                     }
                 }
             } catch(ClassNotFoundException e) {
-                break;
+                continue;
             }
         }
         return output;
