@@ -113,7 +113,7 @@ public class Manager {
                                 output = "- please specify an exercise";
                                 break;
                             }
-                            //see if run parameters are set up correctly
+                            //see if run parameters are set up
                             String[] paramSplit = inSplit[1].split("\\.");
                             if(paramSplit.length <= 1) {
                                 output = "- incorrect exercise format";
