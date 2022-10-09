@@ -46,7 +46,6 @@ class SubtractionQuizLoop {
 
             //Increase the question count
             count++;
-
             output += "\n" + number1 + "x" + number2 + "=" + answer + ((number1 * number2 == answer) ? " correct" : " wrong");
         }
 

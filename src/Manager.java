@@ -1,8 +1,5 @@
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -119,21 +116,23 @@ public class Manager {
                             //see if run parameters are set up correctly
                             String[] paramSplit = inSplit[1].split("\\.");
                             if(paramSplit.length <= 1) {
-                                output += "incorrect exercise format";
+                                output = "- incorrect exercise format";
                                 break;
                             }
                             //see if exercise exists
                             try {
-                                Class<?> exercise = exerciseArray[Integer.parseInt(paramSplit[0]) - 1][Integer.parseInt(paramSplit[1]) - 1];
+                                int i = Integer.parseInt(paramSplit[0]);
+                                int j = Integer.parseInt(paramSplit[1]);
+                                Class<?> exercise = exerciseArray[i - 1][j - 1];
                                 if(exercise == null) {
                                     output = "- exercise not found";
                                     break;
                                 }
                                 //print run statement
-                                String runStr = "- Running Exercise <" + String.format("%02d.%02d", Integer.parseInt(paramSplit[0]), Integer.parseInt(paramSplit[1])) + "> ...";
+                                String runStr = "- Running Exercise <" + String.format("%02d.%02d", i, j) + "> ...";
                                 System.out.println(runStr + underlineText(runStr));
                                 output = underlineText(runStr) + "\n- exited with code 0";
-                                
+
                                 //invoke main method of exercise
                                 Method main = exercise.getMethod("main", String[].class, Scanner.class);
                                 main.invoke(null, (String[]) args, (Scanner) in);
@@ -146,8 +145,8 @@ public class Manager {
                         } catch(NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                             StringWriter sw = new StringWriter();
                             e.printStackTrace(new PrintWriter(sw));
-                            output = "- exercise unable to load\n- please refer to the stack trace below:\n" + sw.toString() + underlineText("\t" + sw.toString()) + "\n- exited with code 1";
-                            System.out.println();
+                            String error = sw.toString();
+                            output = "- exercise unable to load\n- please refer to the stack trace below:\n" + error + underlineText("\t" + error) + "\n- exited with code 1";
                             break;
                         }
                     //clears the screen with a ANSI escape code
@@ -161,7 +160,7 @@ public class Manager {
                         break;
                 }
             } catch(NullPointerException e) {
-                output += "Invalid command. Type 'help' for a list of commands.";
+                output = "Invalid command. Type 'help' for a list of commands.";
             }
         }
     }
