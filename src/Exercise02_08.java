@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
 public class Exercise02_08 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         //obtain hours:minutes:seconds in current time zone relative to GMT
+        Scanner in = new Scanner(System.in);
         System.out.print("Enter the time zone offset to GMT: ");
         int timezone = in.nextInt();
         long totalSeconds = System.currentTimeMillis() / 1000;

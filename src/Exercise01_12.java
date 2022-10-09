@@ -1,7 +1,5 @@
-import java.util.Scanner;
-
 public class Exercise01_12 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         int hours = 1;
         int minutes = 50;
         int seconds = 30;

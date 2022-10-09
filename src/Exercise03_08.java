@@ -1,9 +1,10 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
 public class Exercise03_08 {
-    public static void main(String[] args, Scanner in) {
-        
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         System.out.print("Enter three integers: ");
         int[] numArray = {in.nextInt(), in.nextInt(), in.nextInt()};
         

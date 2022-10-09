@@ -1,7 +1,5 @@
-import java.util.Scanner;
-
 public class Exercise05_03 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         /* Farenheit = Celsius * 9 / 5 + 32
          * printf format = "%-5d%-5d", celsius (i), farhenheit (i * 9 / 5 + 32)
          * skipped ch4 oopsie, just learned how printf works lol

@@ -2,9 +2,11 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
 public class Exercise02_11 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         //Input version of exercise 01_11
+        Scanner in = new Scanner(System.in);
         int seconds = 365 * 24 * 60 * 60;
         double births = seconds / 7;
         double deaths = seconds / 13;

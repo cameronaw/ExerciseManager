@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Exercise03_02 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         AdditionQuiz aq = new AdditionQuiz();
         aq.main(args);
     }

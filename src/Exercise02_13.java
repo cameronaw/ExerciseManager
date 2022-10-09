@@ -1,9 +1,11 @@
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
 public class Exercise02_13 {
     static double interest = 0.0375/12;
 
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         System.out.print("enter the monthly saving amount: ");
         double saving = in.nextDouble();
 

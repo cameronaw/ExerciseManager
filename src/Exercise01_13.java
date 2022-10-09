@@ -1,7 +1,5 @@
-import java.util.Scanner;
-
 public class Exercise01_13 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         /*  Cramer's Rule
          *  ax + by = e       ed - bf       af - ec
          *                x = -------   y = -------

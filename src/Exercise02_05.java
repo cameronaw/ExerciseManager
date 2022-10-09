@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
 public class Exercise02_05 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         System.out.println("Enter the subtotal and a gratuity rate: ");
         double subtotal = in.nextDouble();
         double gratuityRate = in.nextDouble();

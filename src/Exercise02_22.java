@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Exercise02_22 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         ComputeChange cc = new ComputeChange();
         cc.main(args);
     }

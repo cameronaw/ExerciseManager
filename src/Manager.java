@@ -134,8 +134,8 @@ public class Manager {
                                 output = underlineText(runStr) + "\n- exited with code 0";
 
                                 //invoke main method of exercise
-                                Method main = exercise.getMethod("main", String[].class, Scanner.class);
-                                main.invoke(null, (String[]) args, (Scanner) in);
+                                Method main = exercise.getMethod("main", String[].class);
+                                main.invoke(null, (Object) args);
                                 break;
                             } catch(ArrayIndexOutOfBoundsException ee) {
                                 output = "- exercise not found";
@@ -157,6 +157,7 @@ public class Manager {
                     //exits the program
                     case EXIT:
                         boot = false;
+                        in.close();
                         break;
                 }
             } catch(NullPointerException e) {

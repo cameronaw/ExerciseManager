@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
 public class Exercise03_10 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         SubtractionQuiz sq = new SubtractionQuiz();
         sq.main(args);
     }
 }
 
-@SuppressWarnings("resource") // use to silence stupid scanner leak
+@SuppressWarnings("resource")
 class SubtractionQuiz {
     public void main(String[] args) {
         int number1 = (int)(Math.random() * 1000);

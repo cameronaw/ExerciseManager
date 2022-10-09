@@ -1,9 +1,8 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Exercise01_11 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         /* RATES */
         // One birth every 7 seconds
         // One death every 13 seconds

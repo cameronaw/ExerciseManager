@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Exercise02_07 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         ShowCurrentTime sct = new ShowCurrentTime();
         sct.main(args);
     }

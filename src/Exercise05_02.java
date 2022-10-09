@@ -2,14 +2,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Exercise05_02 {
-    public static void main(String[] args, Scanner in) {
-        
+    public static void main(String[] args) {
         SubtractionQuizLoop sql = new SubtractionQuizLoop();
         sql.main(args);
     }
 }
 
-@SuppressWarnings("resource") // use to silence stupid scanner leak
+@SuppressWarnings("resource")
 class SubtractionQuizLoop {
     public void main(String[] args) {
         final int NUMBER_OF_QUESTIONS = 10;

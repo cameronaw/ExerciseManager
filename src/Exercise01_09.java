@@ -1,7 +1,5 @@
-import java.util.Scanner;
-
 public class Exercise01_09 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         double w = 5.3;
         double h = 8.6;
         double area = w * h;

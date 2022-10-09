@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
 public class Exercise02_06 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         boolean boot = true;
+        Scanner in = new Scanner(System.in);
         while(boot) {
             System.out.print("Enter a number between 0 and 1000: ");
             int input = in.nextInt();

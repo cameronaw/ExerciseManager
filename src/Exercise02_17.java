@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
 public class Exercise02_17 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         /* to calculate coldness using temperature and wind speed:
          * t(we) = 365.74 + 0.6215t(a) - 35.75v^0.16 + 0.4275t(a)^0.16
          * t(a) = outside temperature measure in F*
@@ -11,6 +12,7 @@ public class Exercise02_17 {
 
         double temperature;
         double windspeed;
+        Scanner in = new Scanner(System.in);
         
         do {
             System.out.print("Enter the temperature in Fahrenheit between -58°F and 41°F: ");

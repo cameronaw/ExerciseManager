@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
 public class Exercise02_21 {
-    public static void main(String[] args, Scanner in) {
-        
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         System.out.print("Enter investment amount: ");
         double investment = in.nextDouble();
         System.out.print("Enter annual interest rate in percentage: ");

@@ -1,8 +1,7 @@
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Exercise02_18 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         int a[][] = {{0, 0}, {1, 4}, {2, 7}, {3, 9}, {4, 11}};
         int b[][] = {{2, 1}, {4, 2}, {6, 3}, {10, 5}, {12, 7}};
 

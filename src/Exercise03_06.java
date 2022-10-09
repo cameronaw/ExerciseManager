@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Exercise03_06 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         ComputeAndInterpretBMI bmi = new ComputeAndInterpretBMI();
         bmi.main(args);
     }

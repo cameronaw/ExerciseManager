@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
 public class Exercise03_09 {
-    public static void main(String[] args, Scanner in) {
-        
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         System.out.print("Enter the first 9 digits of an ISBN as integer: ");
         String isbn = in.next();
         int isbnCalc = 0;

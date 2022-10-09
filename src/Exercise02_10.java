@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
 public class Exercise02_10 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         System.out.print("Enter the amont of water in kilograms: ");
         double M = in.nextDouble();
         System.out.print("Enter the initial temperature: ");

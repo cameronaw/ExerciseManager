@@ -1,7 +1,5 @@
-import java.util.Scanner;
-
 public class Exercise01_10 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
         int minutes = 50;
         int seconds = 30;
         int time = minutes * 60 + seconds;

@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
 public class Exercise02_19 {
-    public static void main(String[] args, Scanner in) {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         System.out.print("Enter the coordinates of three points separated by spaces like \"x1 y1 x2 y2 x3 y3\": ");
         double x1 = in.nextDouble();
         double y1 = in.nextDouble();
