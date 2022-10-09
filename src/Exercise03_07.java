@@ -12,7 +12,7 @@ class ComputeChange2 {
     public void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        //why cant I use object )):::!!!!!
+        //why cant I use object :((( !!
         System.out.print("Enter an amount in int, for example 1156 ($11.56): ");
         int amount = input.nextInt();
         int remainingAmount = amount;

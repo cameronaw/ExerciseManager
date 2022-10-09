@@ -14,7 +14,5 @@ public class Exercise05_01 {
                 System.out.println("You don't pass the exam");
             }
         } while(input != -1);
-
-        in.nextLine(); // use when scanner is used
     }
 }

@@ -23,7 +23,5 @@ public class Exercise02_13 {
         savingMonth = (savingMonth + saving) * (1 + interest);
         savingMonth = (savingMonth + saving) * (1 + interest);
         System.out.println("After the sixth month, the account value is " + savingMonth);
-
-        in.nextLine();
     }
 }

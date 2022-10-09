@@ -19,7 +19,5 @@ public class Exercise03_03 {
         } else {
             System.out.println("The equation has no solution.");
         }
-
-        in.nextLine(); // use when scanner is used
     }
 }

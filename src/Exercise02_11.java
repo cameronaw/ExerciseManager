@@ -18,8 +18,6 @@ public class Exercise02_11 {
 
         ArrayList<String> populationArray = calculateGrowth(inYears, births, deaths, immigrants, population);
         System.out.println("The population in " + inYears + " years is " + populationArray.get(inYears));
-
-        in.nextLine();
     }
 
     // i love making things complicated for no reason

@@ -10,11 +10,9 @@ public class Exercise03_08 {
         
         sort(numArray);
         System.out.println("Your integers in increasing order: " + Arrays.toString(numArray));
-
-        in.nextLine(); // use when scanner is used
     }
 
-    //bruh ima just use insertion sort lol
+    //ima just use insertion sort lol
     private static void sort(int[] input) {
         for(int i = 1; i < input.length; i++) {
             int temp = input[i];

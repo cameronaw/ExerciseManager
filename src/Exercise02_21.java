@@ -13,7 +13,5 @@ public class Exercise02_21 {
 
         double futureInvestment = investment * Math.pow(1 + rate / 1200, years*12);
         System.out.println("Future value is $" + Math.round(futureInvestment * 100) / 100.0);
-
-        in.nextLine(); // use when scanner is used
     }
 }

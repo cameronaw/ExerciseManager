@@ -10,8 +10,6 @@ public class Exercise02_05 {
         double gratuity = subtotal * (gratuityRate / 100);
         double total = subtotal + gratuity;
         System.out.println("The gratuity is $" + gratuity + " and total is $" + total);
-
-        in.nextLine();
     }
 }
 

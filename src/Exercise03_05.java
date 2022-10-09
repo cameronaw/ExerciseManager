@@ -12,8 +12,5 @@ public class Exercise03_05 {
         int futureDay = (in.nextInt() + day) % 7;
 
         System.out.println("Today is " + WEEK[day] + " and the future day is " + WEEK[futureDay]);
-        
-
-        in.nextLine(); // use when scanner is used
     }
 }

@@ -8,7 +8,5 @@ public class Exercise02_03 {
         double meter = in.nextDouble();
         double feet = meter * 3.2786;
         System.out.println(meter + " meters is " + feet + " feet");
-
-        in.nextLine();
     }
 }

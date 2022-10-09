@@ -13,7 +13,5 @@ public class Exercise02_23 {
 
         double drivingCost = distance / mpg * ppg;
         System.out.println("The cost of driving is $" + Math.round(drivingCost * 100) / 100.0);
-
-        in.nextLine(); // use when scanner is used
     }
 }

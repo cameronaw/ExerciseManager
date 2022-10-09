@@ -10,7 +10,5 @@ public class Exercise02_12 {
         
         double length = speed * speed / (2 * acceleration);
         System.out.println("The minimum runaway length for this airplane is " + Math.round(length * 1000) / 1000.0);
-
-        in.nextLine();
     }
 }

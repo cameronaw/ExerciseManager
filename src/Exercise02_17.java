@@ -25,7 +25,5 @@ public class Exercise02_17 {
 
         double windchill = 35.74 + 0.6215 * temperature - 35.75 * Math.pow(windspeed, 0.16) + 0.4275 * temperature * Math.pow(windspeed, 0.16);
         System.out.println("The wind chill index is " + Math.round(windchill * 100000) / 100000.0);
-
-        in.nextLine();
     }
 }

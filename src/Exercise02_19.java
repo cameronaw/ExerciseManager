@@ -20,8 +20,6 @@ public class Exercise02_19 {
         double area = Math.pow(sides * (sides - side1) * (sides - side2) * (sides - side3), 0.5);
 
         System.out.println("The are of the triangle is " + Math.round(area * 10) / 10.0);
-
-        in.nextLine(); // use when scanner is used
     }
 
     public static double calcSide(double x1, double y1, double x2, double y2) {

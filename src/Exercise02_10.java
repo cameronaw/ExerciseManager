@@ -13,7 +13,5 @@ public class Exercise02_10 {
 
         double Q = M * (finalTemperature - initialTemperature) * 4184;
         System.out.println("The energy needed is " + Math.round(Q * 10) / 10.0);
-
-        in.nextLine();
     }
 }

@@ -9,7 +9,5 @@ public class Exercise02_16 {
 
         double area = 3 * Math.pow(3, 0.5) / 2 * side * side;
         System.out.println("The area of the hexagon is " + Math.round(area * 10000) / 10000.0);
-
-        in.nextLine();
     }
 }

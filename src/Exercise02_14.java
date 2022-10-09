@@ -18,7 +18,5 @@ public class Exercise02_14 {
 
         double BMI = kilograms / (meters * meters);
         System.out.println("BMI is " + Math.round(BMI * 10000) / 10000.0);
-
-        in.nextLine();
     }
 }

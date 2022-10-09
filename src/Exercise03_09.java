@@ -15,6 +15,5 @@ public class Exercise03_09 {
         String isbn10 = isbnCalc % 11 == 10 ? "X" : Integer.toString(isbnCalc % 11);
 
         System.out.println("The ISBN-10 number is " + isbn + "" + isbn10);
-        in.nextLine(); // use when scanner is used
     }
 }

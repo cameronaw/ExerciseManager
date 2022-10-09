@@ -1,19 +1,9 @@
 import java.util.Scanner;
 
+//(o_o) <-- mfw all scanner objects are tied to System.in
+@SuppressWarnings("resource")
 public class Exercise/*00_00*/ {
-    public static void main(String[] args, Scanner in) {
-        
+    public static void main(String[] args) {
         // ...
-
-        in.nextLine(); // use when scanner is used
-    }
-}
-
-@SuppressWarnings("resource") // use to silence stupid scanner leak
-class /*Name*/ {
-    public void main(String[] args) {
-
-        // ...
-
     }
 }
