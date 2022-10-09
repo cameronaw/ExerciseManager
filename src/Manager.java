@@ -1,18 +1,25 @@
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
 public class Manager {
+    final public static int MAX_CHAPTERS = 18;
+    final public static int MAX_LESSONS = 51;
     static boolean boot = true;
+
+    //TODO: completely revamp class search function via reflective api
+    //TODO: add ability to find main class and its properties reflectively regardless of class name 
 
     //User input command list
     public enum Commands {
         HELP("help", "displays the help menu"),
         LIST("list", "lists available exercises"),
-        RUN("run <name>", "runs an exercise"),
+        RUN("run <ch>.<ls>", "runs an exercise"),
         CLEAR("clear", "clears the screen"),
         EXIT("exit", "exits the program");
 
@@ -36,25 +43,19 @@ public class Manager {
     }
 
     //Obtains all exercise classes and command references
-    //TODO: completely revamp class search function via reflective api
-    //TODO: add ability to find main class and its properties reflectively regardless of class name 
-    public static LinkedHashMap<String, Class<?>> getExercises() {
-        LinkedHashMap<String, Class<?>> output = new LinkedHashMap<>();
-        //this is disgusting lol
-        for(int i = 1; i <= 18; i++) {
-            try {
-                Class.forName("Exercise" + String.format("%02d", i) + "_01");
-                for(int j = 1; j <= 51; j++) {
-                    try {
-                        output.put(String.format("%02d", i) + "." + String.format("%02d", j), Class.forName("Exercise" + String.format("%02d", i) + "_" + String.format("%02d", j)));
-                    } catch (ClassNotFoundException ee) {
-                        break;
-                    }
+    public static Class<?>[][] getExercises() {
+        Class<?>[][] output = new Class<?>[MAX_CHAPTERS][MAX_LESSONS];
+        for(int i = 0; i < MAX_CHAPTERS; i++) {
+            for(int j = 0; j < MAX_LESSONS; j++) {
+                try {
+                    Class<?> exercise = Class.forName("Exercise" + String.format("%02d", (i + 1)) + "_" + String.format("%02d", (j + 1)));
+                    output[i][j] = exercise;
+                } catch(ClassNotFoundException e) {
+                    output[i][j] = null;
                 }
-            } catch(ClassNotFoundException e) {
-                continue;
             }
         }
+        //System.out.println(Arrays.deepToString(output));
         return output;
     }
 
@@ -70,11 +71,11 @@ public class Manager {
             output += "=";
         }
         return output;
-    } 
+    }
 
     public static void main(String[] args) {
         Commands[] cmdList = Commands.values();
-        LinkedHashMap<String, Class<?>> exerciseTable = getExercises();
+        Class<?>[][] exerciseArray = getExercises();
         Scanner in = new Scanner(System.in);
         String output = "Welcome to the Java Exercises Manager! Use the 'help' command to view possible arguments.";
 
@@ -90,45 +91,65 @@ public class Manager {
                         output = "- possible arguments:";
                         output += underlineText(output);
                         for(Commands cmd : cmdList) {
-                            //TODO: fix alignment lol
-                            output += "\n- " + cmd.use + ":\t\t" + cmd.description;
+                            output += String.format("\n- %-16s%-16s", cmd.use, cmd.description);
                         }
                         break;
                     //show list of available exercises
                     case LIST:
-                        output = "- available exercises:";
-                        output += underlineText(output);
-                        for(String exercise : exerciseTable.keySet()) {
-                            output += "\n- Exercise <" + exercise + ">";
+                        output = "- available exercises:\n";
+                        for(int i = 0; i < MAX_CHAPTERS; i++) {
+                            if(exerciseArray[i][0] == null) continue;
+                            output += "\n| Chapt. <" + String.format("%02d" , (i + 1)) + "> |";
+                            output += underlineText(output);
+                            for(int j = 0; j < MAX_LESSONS; j++) {
+                                if(exerciseArray[i][j] == null) continue;
+                                output += "\n- Lesson <" + String.format("%02d", (j + 1)) + "> -";
+                            }
+                            output += "\n";
                         }
                         break;
                     //run the desired exercise
                     case RUN:
                         try {
-                            if(inSplit.length > 1) {
-                                //access exercise class
-                                Class<?> exercise = exerciseTable.get(inSplit[1]);
-                                if(exercise != null) {
-                                    //running statement
-                                    String runStr = "- Running " + inSplit[1] + " ...";
-                                    System.out.println(runStr + underlineText(runStr));
-                                    output = underlineText(runStr) + "\n- exited with code 0";
-                                    
-                                    //invoke main method of exercise
-                                    Method main = exercise.getMethod("main", String[].class, Scanner.class);
-                                    main.invoke(null, (String[]) args, (Scanner) in);
-                                } else {
-                                    output = "- exercise not found";
-                                }
-                            } else {
+                            //see if run parameter exists
+                            if(inSplit.length <= 1) {
                                 output = "- please specify an exercise";
+                                break;
                             }
+                            //see if run parameters are set up correctly
+                            String[] paramSplit = inSplit[1].split("\\.");
+                            if(paramSplit.length <= 1) {
+                                output += "incorrect exercise format";
+                                break;
+                            }
+                            //see if exercise exists
+                            try {
+                                Class<?> exercise = exerciseArray[Integer.parseInt(paramSplit[0]) - 1][Integer.parseInt(paramSplit[1]) - 1];
+                                if(exercise == null) {
+                                    output = "- exercise not found";
+                                    break;
+                                }
+                                //print run statement
+                                String runStr = "- Running Exercise <" + String.format("%02d.%02d", Integer.parseInt(paramSplit[0]), Integer.parseInt(paramSplit[1])) + "> ...";
+                                System.out.println(runStr + underlineText(runStr));
+                                output = underlineText(runStr) + "\n- exited with code 0";
+                                
+                                //invoke main method of exercise
+                                Method main = exercise.getMethod("main", String[].class, Scanner.class);
+                                main.invoke(null, (String[]) args, (Scanner) in);
+                                break;
+                            } catch(ArrayIndexOutOfBoundsException ee) {
+                                output = "- exercise not found";
+                                break;
+                            }
+                            
                         } catch(NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                             StringWriter sw = new StringWriter();
                             e.printStackTrace(new PrintWriter(sw));
                             output = "- exercise unable to load\n- please refer to the stack trace below:\n" + sw.toString() + underlineText("\t" + sw.toString()) + "\n- exited with code 1";
+                            System.out.println();
+                            break;
                         }
-                        break;
                     //clears the screen with a ANSI escape code
                     case CLEAR:
                         output = "\033[H\033[2J";
