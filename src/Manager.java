@@ -5,15 +5,15 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 public class Manager {
-    final public static int MAX_CHAPTERS = 18;
-    final public static int MAX_LESSONS = 51;
-    static boolean boot = true;
+    final private static int MAX_CHAPTERS = 18;
+    final private static int MAX_LESSONS = 51;
+    private static boolean boot = true;
 
     //TODO: completely revamp class search function via reflective api
     //TODO: add ability to find main class and its properties reflectively regardless of class name 
 
     //User input command list
-    public enum Commands {
+    private enum Commands {
         HELP("help", "displays the help menu"),
         LIST("list", "lists available exercises"),
         RUN("run <ch>.<ls>", "runs an exercise"),
@@ -28,7 +28,7 @@ public class Manager {
             this.description = description;
         }
 
-        public static Commands findCommand(String input) {
+        private static Commands findCommand(String input) {
             Commands output = null;
             for(Commands cmd : Commands.values()) {
                 if(cmd.name().toLowerCase().equals(input)) {
@@ -40,7 +40,7 @@ public class Manager {
     }
 
     //Obtains all exercise classes and command references
-    public static Class<?>[][] getExercises() {
+    private static Class<?>[][] getExercises() {
         Class<?>[][] output = new Class<?>[MAX_CHAPTERS][MAX_LESSONS];
         for(int i = 0; i < MAX_CHAPTERS; i++) {
             for(int j = 0; j < MAX_LESSONS; j++) {
@@ -57,7 +57,7 @@ public class Manager {
     }
 
     //Underlines a specific string depending on its length
-    public static String underlineText(String input) {
+    private static String underlineText(String input) {
         String output = "\n";
         String[] inputArray = input.split("\n");
         for(int i = 0; i < inputArray[inputArray.length - 1].length(); i++) {
@@ -141,7 +141,6 @@ public class Manager {
                                 output = "- exercise not found";
                                 break;
                             }
-                            
                         } catch(NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                             StringWriter sw = new StringWriter();
                             e.printStackTrace(new PrintWriter(sw));
